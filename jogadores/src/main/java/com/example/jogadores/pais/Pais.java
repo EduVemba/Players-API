@@ -1,11 +1,17 @@
 package com.example.jogadores.pais;
 
 import com.example.jogadores.jogador.Jogador;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Table
+@Entity
 public class Pais {
 
-    private String nome;
+    @Id
     private String code;
+    private String nome;
 
     public Pais() {}
 

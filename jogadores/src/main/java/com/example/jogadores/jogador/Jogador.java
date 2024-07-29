@@ -1,17 +1,27 @@
 package com.example.jogadores.jogador;
 
 
+import com.example.jogadores.pais.Pais;
+import jakarta.persistence.*;
+
 import java.lang.annotation.Target;
 import java.time.LocalDate;
 import java.time.Period;
 
+@Table
+@Entity
 public class Jogador {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long ID;
     private String nome;
     private LocalDate dob;
     private Character sexo;
+
+    @ManyToOne
+    @JoinColumn(name = "pais_code",referencedColumnName = "code")
+    private Pais pais;
 
     public Jogador(){}
 
@@ -53,5 +63,13 @@ public class Jogador {
     }
     public int getAge() {
         return Period.between(LocalDate.now(), dob).getYears();
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
 }
