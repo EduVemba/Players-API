@@ -1,6 +1,7 @@
 package com.example.jogadores.jogador;
 
 
+import com.example.jogadores.JogadoresApplication;
 import com.example.jogadores.pais.Pais;
 import jakarta.persistence.*;
 
@@ -32,6 +33,7 @@ public class Jogador {
     private Pais pais;
 
     public Jogador(){}
+
 
     public Jogador(Long ID, String nome, LocalDate dob, Character sexo) {
         this.ID = ID;
@@ -70,7 +72,7 @@ public class Jogador {
         return ID;
     }
     public int getAge() {
-        return Period.between(LocalDate.now(), dob).getYears();
+        return Period.between(dob , LocalDate.now()).getYears();
     }
 
 }
