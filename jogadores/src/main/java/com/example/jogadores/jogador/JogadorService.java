@@ -23,8 +23,8 @@ public class JogadorService {
 
     //TODO: fix this code with error 500
     public void postJogador(Jogador jogador){
-        Optional<Jogador> jogadorNumber = jogadorRepository.findById(jogador.getID());
-        if(jogadorNumber.isPresent()){
+        Optional<Jogador> jogadorExistente = jogadorRepository.findByNomeAndDob(jogador.getNome(), jogador.getDob());
+        if (jogadorExistente.isPresent()){
             throw new IllegalStateException("This player is already here");
         }
         jogadorRepository.save(jogador);

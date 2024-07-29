@@ -74,6 +74,10 @@ public class Jogador {
         return ID;
     }
 
+    public String getPais(){
+        return pais.getNome();
+    }
+
     public int getAge() {
         return Period.between(dob , LocalDate.now()).getYears();
     }
