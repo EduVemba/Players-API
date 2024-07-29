@@ -3,6 +3,7 @@ package com.example.jogadores.jogador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -28,4 +29,13 @@ public class jogadorController {
     public void deleteJogadores(@PathVariable("playerId") Long id) {
        jogadorService.deleteJogador(id);
     }
-}
+
+
+    @PutMapping(path = "{playerId}")
+    public void updateStudent(
+            @PathVariable("playerId") Long playerId,
+            @RequestBody(required = false) String name,
+            @RequestParam(required = false) String sexo,
+            @RequestParam(required = false) LocalDate dob) {
+        jogadorService.updatePlayer(playerId,name,sexo,dob);
+    }}

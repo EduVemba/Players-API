@@ -26,7 +26,7 @@ public class Jogador {
     private Long ID;
     private String nome;
     private LocalDate dob;
-    private Character sexo;
+    private String sexo;
 
     @ManyToOne
     @JoinColumn(name = "pais_code",referencedColumnName = "code")
@@ -35,14 +35,14 @@ public class Jogador {
     public Jogador(){}
 
 
-    public Jogador(Long ID, String nome, LocalDate dob, Character sexo) {
+    public Jogador(Long ID, String nome, LocalDate dob, String sexo) {
         this.ID = ID;
         this.nome = nome;
         this.dob = dob;
         this.sexo = sexo;
 
     }
-    public Jogador(String nome, LocalDate dob, Character sexo) {
+    public Jogador(String nome, LocalDate dob, String sexo) {
         this.nome = nome;
         this.dob = dob;
         this.sexo = sexo;
@@ -63,10 +63,10 @@ public class Jogador {
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
-    public Character getSexo() {
+    public String getSexo() {
         return sexo;
     }
-    public void setSexo(Character sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
