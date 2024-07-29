@@ -14,13 +14,8 @@ import java.util.List;
 public class JogadorConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(jogadorRepository jogadorRepository, PaisRepository paisRepository) {
+    CommandLineRunner commandLineRunner(jogadorRepository jogadorRepository) {
         return args -> {
-            Pais brasil = new Pais("Brasil", "BRA");
-            Pais argentina = new Pais("Argentina", "ARG");
-
-           paisRepository.saveAll(List.of(brasil, argentina));
-
             Jogador Gilson = new Jogador(
                     "Gilson",
                     LocalDate.of(2000, Month.AUGUST,20),

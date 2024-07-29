@@ -19,4 +19,13 @@ public class JogadorService {
     public List<Jogador> getPlayers(){
         return jogadorRepository.findAll();
     }
+
+    //TODO: fix this code with 404 error.
+    public void deleteJogador(Long id){
+        boolean exists = jogadorRepository.existsById(id);
+        if(!exists){
+            throw new IllegalStateException("The jogador with id " + id + " does not exist");
+        }
+        jogadorRepository.deleteById(id);
+    }
 }

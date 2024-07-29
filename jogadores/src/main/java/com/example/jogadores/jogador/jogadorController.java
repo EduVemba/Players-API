@@ -1,9 +1,7 @@
 package com.example.jogadores.jogador;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,9 @@ public class jogadorController {
     @GetMapping
     public List<Jogador> getJogadores() {
         return jogadorService.getPlayers();
+    }
+    @DeleteMapping(path = "jogadorId")
+    public void deleteJogadores(@PathVariable("jogadorId") Long id) {
+       jogadorService.deleteJogador(id);
     }
 }
