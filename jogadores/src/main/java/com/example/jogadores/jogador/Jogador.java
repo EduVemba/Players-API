@@ -13,7 +13,15 @@ import java.time.Period;
 public class Jogador {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "player_sequence",
+            sequenceName = "player_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "player_sequence"
+    )
     private Long ID;
     private String nome;
     private LocalDate dob;
@@ -65,11 +73,4 @@ public class Jogador {
         return Period.between(LocalDate.now(), dob).getYears();
     }
 
-    public Pais getPais() {
-        return pais;
-    }
-
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
 }
