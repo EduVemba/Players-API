@@ -40,6 +40,7 @@ public class Jogador {
         this.nome = nome;
         this.dob = dob;
         this.sexo = sexo;
+
     }
     public Jogador(String nome, LocalDate dob, Character sexo) {
         this.nome = nome;
@@ -68,9 +69,11 @@ public class Jogador {
     public void setSexo(Character sexo) {
         this.sexo = sexo;
     }
+
     public Long getID() {
         return ID;
     }
+
     public int getAge() {
         return Period.between(dob , LocalDate.now()).getYears();
     }

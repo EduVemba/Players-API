@@ -20,8 +20,12 @@ public class jogadorController {
     public List<Jogador> getJogadores() {
         return jogadorService.getPlayers();
     }
-    @DeleteMapping(path = "jogadorId")
-    public void deleteJogadores(@PathVariable("jogadorId") Long id) {
+    @PostMapping
+    public void addJogador(@RequestBody Jogador jogador) {
+       jogadorService.postJogador(jogador);
+    }
+    @DeleteMapping(path = "{playerId}")
+    public void deleteJogadores(@PathVariable("playerId") Long id) {
        jogadorService.deleteJogador(id);
     }
 }
