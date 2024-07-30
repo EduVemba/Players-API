@@ -1,7 +1,6 @@
 package com.example.jogadores.jogador;
 
-import com.example.jogadores.pais.Pais;
-import com.example.jogadores.pais.PaisRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
