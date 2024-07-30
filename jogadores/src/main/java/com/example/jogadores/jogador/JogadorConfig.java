@@ -19,12 +19,12 @@ public class JogadorConfig {
             Jogador Gilson = new Jogador(
                     "Gilson",
                     LocalDate.of(2000, Month.AUGUST,20),
-                    'M'
+                    "M"
             );
             Jogador Messi = new Jogador(
                     "Messi",
                     LocalDate.of(1987, Month.JUNE, 24),
-                    'M'
+                    "M"
             );
             jogadorRepository.saveAll(List.of(Gilson, Messi));
 
