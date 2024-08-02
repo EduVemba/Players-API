@@ -36,6 +36,7 @@ public class jogadorController {
             @PathVariable("playerId") Long playerId,
             @RequestBody(required = false) String name,
             @RequestParam(required = false) String sexo,
+            @RequestParam(required = false) String code,
             @RequestParam(required = false) LocalDate dob) {
-        jogadorService.updatePlayer(playerId,name,sexo,dob);
+        jogadorService.updatePlayer(playerId,name,sexo,code,dob);
     }}

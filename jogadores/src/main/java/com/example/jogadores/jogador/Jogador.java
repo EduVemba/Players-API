@@ -83,4 +83,7 @@ public class Jogador {
         return Period.between(dob , LocalDate.now()).getYears();
     }
 
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.jogadores.jogador;
 
 
+import com.example.jogadores.pais.Pais;
+import com.example.jogadores.pais.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
@@ -14,10 +16,12 @@ import java.util.Optional;
 public class JogadorService {
 
     private final  jogadorRepository jogadorRepository;
+    private final PaisRepository paisRepository;
 
     @Autowired
-    public JogadorService(jogadorRepository jogadorRepository) {
+    public JogadorService(jogadorRepository jogadorRepository, PaisRepository paisRepository) {
         this.jogadorRepository = jogadorRepository;
+        this.paisRepository = paisRepository;
     }
 
     public List<Jogador> getPlayers(){
@@ -40,10 +44,10 @@ public class JogadorService {
         jogadorRepository.deleteById(id);
     }
 
-    //TODO: Review this code
     public void updatePlayer(Long playerId,
                                 String name,
                                 String sexo,
+                                String code,
                                 LocalDate dob) {
         Jogador empregado = jogadorRepository.findById(playerId)
                 .orElseThrow(() -> new IllegalStateException(
@@ -58,6 +62,17 @@ public class JogadorService {
                 throw new IllegalArgumentException("Sexo must be 'F' or 'M'");
             }
             empregado.setSexo(sexo);
+
+            //TODO: rever essa parte do codigo
+            if (code != null) {
+                Optional<Pais> paisOptional = paisRepository.findByCode(code);
+                if (!paisOptional.isPresent()) {
+                    throw new IllegalArgumentException("Country with code: " + code + " does not exist");
+                }
+                Pais pais = paisOptional.get();
+                empregado.setPais(pais);
+            }
+            //----------------------------------------------------------------
 
             if (dob != null && !Objects.equals(empregado.getDob(), dob)) {
                 empregado.setDob(dob);
