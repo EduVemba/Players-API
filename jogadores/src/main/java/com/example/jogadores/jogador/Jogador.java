@@ -51,6 +51,14 @@ public class Jogador {
         this.paisNome = pais;
     }
 
+    public Jogador(Jogador data) {
+        this.ID = data.ID;
+        this.nome = data.nome;
+        this.dob = data.dob;
+        this.sexo = data.sexo;
+        this.paisNome = data.paisNome;
+    }
+
     public void setID(Long ID) {
         this.ID = ID;
     }
@@ -84,6 +92,6 @@ public class Jogador {
     }
 
     public void setPais(Pais pais) {
-        this.pais = pais;
+        this.paisNome = pais.getNome();
     }
 }

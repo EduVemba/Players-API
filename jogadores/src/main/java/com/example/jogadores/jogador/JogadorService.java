@@ -24,6 +24,7 @@ public class JogadorService {
         this.paisRepository = paisRepository;
     }
 
+
     public List<Jogador> getPlayers(){
         return jogadorRepository.findAll();
     }
@@ -66,9 +67,8 @@ public class JogadorService {
             //TODO: rever essa parte do codigo
             if (code != null) {
                 Optional<Pais> paisOptional = paisRepository.findByCode(code);
-                if (!paisOptional.isPresent()) {
+                if (!paisOptional.isPresent())
                     throw new IllegalArgumentException("Country with code: " + code + " does not exist");
-                }
                 Pais pais = paisOptional.get();
                 empregado.setPais(pais);
             }
