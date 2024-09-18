@@ -18,22 +18,9 @@ public class jogadorController {
     }
 
     @GetMapping("/players")
-    @CrossOrigin(origins = "http://localhost:63342")
     public List<Jogador> getJogadores() {
         return jogadorService.getPlayers();
     }
-    @PostMapping("/add")
-    @CrossOrigin(origins = "http://localhost:63342")
-    public void addJogador(@RequestBody Jogador jogador) {
-       jogadorService.postJogador(jogador);
-    }
-    @DeleteMapping(path = "{playerId}")
-    @CrossOrigin(origins = "http://localhost:63342")
-    public void deleteJogadores(@PathVariable("playerId") Long id) {
-       jogadorService.deleteJogador(id);
-    }
-
-
     @PutMapping(path = "{playerId}")
     public void updateStudent(
             @PathVariable("playerId") Long playerId,
