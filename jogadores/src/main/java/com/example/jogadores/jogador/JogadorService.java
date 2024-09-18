@@ -4,8 +4,8 @@ package com.example.jogadores.jogador;
 import com.example.jogadores.pais.Pais;
 import com.example.jogadores.pais.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDate;
 import java.util.List;

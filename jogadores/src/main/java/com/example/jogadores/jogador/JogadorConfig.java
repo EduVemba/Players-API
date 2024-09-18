@@ -19,8 +19,9 @@ public class JogadorConfig {
         return args -> {
             Pais brasil = new Pais("Brasil", "BRA");
             Pais argentina = new Pais("Argentina", "ARG");
+            Pais portugual = new Pais("Portugual", "PTL");
 
-            paisRepository.saveAll(List.of(brasil, argentina));
+            paisRepository.saveAll(List.of(brasil, argentina, portugual));
 
             Jogador Gilson = new Jogador(
                     "Gilson",
