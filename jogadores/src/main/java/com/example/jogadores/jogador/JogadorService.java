@@ -67,9 +67,18 @@ public class JogadorService {
             //TODO: rever essa parte do codigo
             if (code != null) {
                 Optional<Pais> paisOptional = paisRepository.findByCode(code);
-                if (!paisOptional.isPresent())
+                if (paisOptional.isEmpty()) {
                     throw new IllegalArgumentException("Country with code: " + code + " does not exist");
+                }
+
+                Optional<String> nomeOptional = paisRepository.getNomeByCode(code);
+                if (nomeOptional.isEmpty()) {
+                    throw new IllegalArgumentException("Country name for code: " + code + " not found");
+                }
+
+                String nome = nomeOptional.get();
                 Pais pais = paisOptional.get();
+                pais.setNome(nome);
                 empregado.setPais(pais);
             }
             //----------------------------------------------------------------

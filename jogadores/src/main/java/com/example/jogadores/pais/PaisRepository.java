@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface PaisRepository extends
         JpaRepository<Pais, String> {
 
-
     Optional<Pais> findByCode(String code);
+
+    Optional<String> getNomeByCode(String code);
 }
