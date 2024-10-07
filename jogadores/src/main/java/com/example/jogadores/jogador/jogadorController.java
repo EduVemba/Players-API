@@ -21,6 +21,7 @@ public class jogadorController {
     public List<Jogador> getJogadores() {
         return jogadorService.getPlayers();
     }
+
     @PutMapping(path = "{playerId}")
     public void updateStudent(
             @PathVariable("playerId") Long playerId,

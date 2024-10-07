@@ -14,6 +14,8 @@ import java.util.List;
 @Configuration
 public class JogadorConfig {
 
+    private PaisRepository paisRepository;
+
     @Bean
     CommandLineRunner commandLineRunner(jogadorRepository jogadorRepository, PaisRepository paisRepository) {
         return args -> {
@@ -27,13 +29,13 @@ public class JogadorConfig {
                     "Gilson",
                     LocalDate.of(2000, Month.AUGUST,20),
                     "M",
-                    brasil.getNome()
+                    brasil
             );
             Jogador Messi = new Jogador(
                     "Messi",
                     LocalDate.of(1987, Month.JUNE, 24),
                     "M",
-                    argentina.getNome()
+                    argentina
             );
             jogadorRepository.saveAll(List.of(Gilson, Messi));
 

@@ -46,48 +46,42 @@ public class JogadorService {
     }
 
     public void updatePlayer(Long playerId,
-                                String name,
-                                String sexo,
-                                String code,
-                                LocalDate dob) {
-        Jogador empregado = jogadorRepository.findById(playerId)
+                             String name,
+                             String sexo,
+                             String code,
+                             LocalDate dob) {
+
+        Jogador jogador = jogadorRepository.findById(playerId)
                 .orElseThrow(() -> new IllegalStateException(
-                        "Student with id: "+ playerId + " does not exist"));
-        if(name != null &&
-                name.length() > 3 &&
-                !Objects.equals(empregado.getNome(), name)) {
-            empregado.setNome(name);
+                        "Jogador com id: " + playerId + " não existe"));
+
+        if (name != null && name.length() > 3 && !Objects.equals(jogador.getNome(), name)) {
+            jogador.setNome(name);
         }
+
         if (sexo != null) {
             if (!sexo.equals("F") && !sexo.equals("M")) {
-                throw new IllegalArgumentException("Sexo must be 'F' or 'M'");
+                throw new IllegalArgumentException("Sexo deve ser 'F' ou 'M'");
             }
-            empregado.setSexo(sexo);
-
-            //TODO: rever essa parte do codigo
-            if (code != null) {
-                Optional<Pais> paisOptional = paisRepository.findByCode(code);
-                if (paisOptional.isEmpty()) {
-                    throw new IllegalArgumentException("Country with code: " + code + " does not exist");
-                }
-
-                Optional<String> nomeOptional = paisRepository.getNomeByCode(code);
-                if (nomeOptional.isEmpty()) {
-                    throw new IllegalArgumentException("Country name for code: " + code + " not found");
-                }
-
-                String nome = nomeOptional.get();
-                Pais pais = paisOptional.get();
-                pais.setNome(nome);
-                empregado.setPais(pais);
-            }
-            //----------------------------------------------------------------
-
-            if (dob != null && !Objects.equals(empregado.getDob(), dob)) {
-                empregado.setDob(dob);
-            }
-            empregado.setDob(dob);
+            jogador.setSexo(sexo);
         }
-        jogadorRepository.save(empregado);
+
+        if (code != null) {
+            Optional<Pais> paisOptional = paisRepository.findByCode(code);
+
+            if (paisOptional.isEmpty()) {
+                throw new IllegalArgumentException("País com código: " + code + " não existe");
+            }
+
+            Pais pais = paisOptional.get();
+            jogador.setPais(pais);
+        }
+
+        if (dob != null && !Objects.equals(jogador.getDob(), dob)) {
+            jogador.setDob(dob);
+        }
+
+        jogadorRepository.save(jogador);
     }
+
 }
