@@ -1,6 +1,7 @@
 package com.example.jogadores.domain;
 
-import com.example.jogadores.roles.Roles;
+
+import com.example.jogadores.roles.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -33,17 +34,17 @@ public class User implements UserDetails {
     private String nome;
     private String email;
     private String password;
-    private Roles role;
+    private UserRole role;
 
 
-    public User(String nome, String email, String password, Roles role) {
+    public User(String nome, String email, String password, UserRole role) {
         this.nome = nome;
         this.email = email;
         this.password = password;
         this.role = role;
     }
 
-    public User(String email, String password, Roles role) {
+    public User(String email, String password, UserRole role) {
         this.email = email;
         this.password = password;
         this.role = role;
@@ -51,7 +52,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (this.role == Roles.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        if (this.role == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
